@@ -1,28 +1,31 @@
 # ⚡ Solver Core
 
-> **Tiện ích mở rộng tự động hóa & hỗ trợ giải bài tập thông minh trên LMS DUT & Azota bằng AI (Gemini / OpenAI).**
+> **Tiện ích mở rộng tự động hóa & hỗ trợ giải bài tập thông minh trên LMS DUT, LMS DES UDN & Azota bằng AI (Gemini / OpenAI).**
 
-[![Version](https://img.shields.io/badge/version-3.2.0-blue.svg?style=flat-square)](https://github.com/)
-[![Platform](https://img.shields.io/badge/platform-LMS%20DUT%20%7C%20Azota-orange.svg?style=flat-square)](https://github.com/)
+[![Version](https://img.shields.io/badge/version-3.3.0-blue.svg?style=flat-square)](https://github.com/)
+[![Platform](https://img.shields.io/badge/platform-LMS%20DUT%20%7C%20LMS%20DES%20%7C%20Azota-orange.svg?style=flat-square)](https://github.com/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/)
 
-**Solver Core** là tiện ích mở rộng (Browser Extension) thế hệ mới giúp tự động phân tích, xử lý và chọn đáp án bài tập trên nền tảng **LMS DUT** và **Azota**. Dự án tích hợp các API mô hình ngôn ngữ lớn tiên tiến (Google Gemini, OpenAI) nhằm tối ưu hóa độ chính xác và hiệu suất làm bài.
+**Solver Core** là tiện ích mở rộng (Browser Extension) thế hệ mới giúp tự động phân tích, xử lý và chọn đáp án bài tập trên nền tảng **LMS DUT**, **LMS DES UDN (`daotao.des.udn.vn`)** và **Azota**. Dự án tích hợp các API mô hình ngôn ngữ lớn tiên tiến (Google Gemini, OpenAI) nhằm tối ưu hóa độ chính xác và hiệu suất làm bài.
 
 ---
 
-## 🆕 Thông tin bản cập nhật v3.2.0
+## 🆕 Thông tin bản cập nhật v3.3.0
 
-Phiên bản **v3.2.0** mang đến những cải tiến vượt trội về cơ chế xử lý DOM, độ an toàn và khả năng tự động hóa thông minh:
+Phiên bản **v3.3.0** mang đến những cải tiến vượt trội về khả năng tương thích hệ thống mới, cơ chế xử lý DOM, độ an toàn và khả năng tự động hóa thông minh:
 
-### 🎯 1. Cơ chế làm bài thông minh & Thuật toán Double-Check
+### 🌐 1. Hỗ trợ nền tảng mới
+* **Tích hợp LMS DES UDN:** Hỗ trợ chính thức và tối ưu hóa nhận diện câu hỏi/đáp án trên hệ thống E-Learning mới `daotao.des.udn.vn`.
+
+### 🎯 2. Cơ chế làm bài thông minh & Thuật toán Double-Check
 * **Xử lý sự kiện chính xác:** Tool quét câu hỏi, gửi request tới AI. Khi nhận index đáp án, hệ thống kích hoạt đồng thời `input.click()` và `dispatchEvent` tương ứng để đảm bảo trình duyệt ghi nhận lựa chọn.
 * **Tự động hoãn câu (Delay):** Sau khi chọn đáp án, tool tự động hoãn thời gian (tùy chỉnh qua thanh trượt, mặc định 15s) trước khi sang câu kế tiếp.
 * **Vòng lặp Double-Check an toàn tuyệt đối:** Sau khi hoàn thành lượt quét trên trang, tool kích hoạt cơ chế tái kiểm tra DOM toàn bộ câu hỏi. Nếu phát hiện bất kỳ câu nào chưa có trạng thái `input:checked`, hệ thống sẽ **ngay lập tức hủy lệnh Next trang**, ngăn chặn triệt để tình trạng bỏ sót câu hỏi.
 
-### 🛡️ 2. Xử lý lỗi mạng & Hạn chế API
+### 🛡️ 3. Xử lý lỗi mạng & Hạn chế API
 * Khi xảy ra sự cố kết nối hoặc AI trả về lỗi, cờ `allSuccess` tự động chuyển sang `false` ➔ **Hệ thống chủ động hủy lệnh Next** để người dùng xử lý kịp thời.
 
-### 🔄 3. Chế độ xem lại bài (Review Mode)
+### 🔄 4. Chế độ xem lại bài (Review Mode)
 * **Tự động sửa lỗi:** Tool tự động dò tìm các câu trả lời sai và click lại đáp án đúng với tốc độ 1.5 giây/câu.
 * **Giao diện sạch:** Hoạt động hoàn toàn ngầm, **không hiển thị thông báo đè lên web**.
 * **Khóa điều hướng:** **Tuyệt đối không tự động bấm Next** ở chế độ xem lại bài để tránh làm rối luồng theo dõi của người dùng.
@@ -32,7 +35,7 @@ Phiên bản **v3.2.0** mang đến những cải tiến vượt trội về cơ
 ## 💡 Tính năng nổi bật
 
 * 🤖 **Tích hợp AI đa dạng:** Hỗ trợ kết nối mượt mà API từ Google Gemini và OpenAI.
-* ⚡ **Tự động chọn đáp án:** Nhận diện ngữ cảnh và chọn đáp án chuẩn xác trên LMS DUT & Azota.
+* ⚡ **Tự động chọn đáp án:** Nhận diện ngữ cảnh và chọn đáp án chuẩn xác trên LMS DUT, LMS DES UDN (`daotao.des.udn.vn`) & Azota.
 * 🔒 **Double-Check Protection:** Cơ chế kiểm tra 2 lớp đảm bảo 100% câu hỏi trên trang đã được tô đáp án trước khi chuyển trang.
 * ⚙️ **Tùy chỉnh thời gian (Delay):** Chủ động điều chỉnh khoảng hoãn thời gian giữa các câu hỏi để phù hợp với quy định từng nền tảng.
 * 📊 **Kiểm tra kết nối trực tiếp:** Cho phép Test API Key ngay trên giao diện tiện ích trước khi làm bài.
@@ -43,7 +46,7 @@ Phiên bản **v3.2.0** mang đến những cải tiến vượt trội về cơ
 
 ### 🔴 Bước 1: Tải tiện ích về máy
 1. Truy cập mục **[Releases](../../releases)** ở cột bên phải giao diện GitHub.
-2. Tải file **`solver-core-v3.2.0.zip`** bản mới nhất về máy tính.
+2. Tải file **`solver-core-v3.3.0.zip`** bản mới nhất về máy tính.
 3. Giải nén file `.zip` vừa tải ra một thư mục (ví dụ: `solver-core`).
 
 ---
@@ -55,6 +58,12 @@ Phiên bản **v3.2.0** mang đến những cải tiến vượt trội về cơ
 2. Bật công tắc **Chế độ nhà phát triển (Developer Mode)** ở góc trên bên phải màn hình.
 3. Nhấn nút **Tải tiện ích đã giải nén (Load unpacked)** ở góc trái.
 4. Trỏ tới và chọn thư mục `solver-core` đã giải nén ở Bước 1.
+
+---
+
+### 🔴 Bước 3: Cấu hình API Key và sử dụng
+1. Nhấp vào biểu tượng tiện ích **Solver Core** trên thanh công cụ trình duyệt để mở giao diện cài đặt.
+2. Thực hiện thiết lập API Key và lưu cấu hình (xem chi tiết ở phần bên dưới) trước khi mở trang bài tập trên LMS DUT, LMS DES UDN hoặc Azota.
 
 ---
 
