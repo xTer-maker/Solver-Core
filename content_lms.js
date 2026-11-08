@@ -16,7 +16,6 @@
       const state = root.querySelector('.state')?.innerText.trim() || '';
       const isReview = state === 'Correct' || state === 'Incorrect' || state === 'Đúng' || state === 'Sai';
       
-      // Nếu là review và câu đó đã Đúng, bỏ qua
       if (isReview && (state.includes('Correct') || state.includes('Đúng'))) return;
 
       const choices = [];
@@ -57,7 +56,7 @@
         if (!q.isReview) {
            await new Promise(r => setTimeout(r, ANSWER_WAIT)); 
         } else {
-           await new Promise(r => setTimeout(r, 1500)); // Review chạy nhanh hơn
+           await new Promise(r => setTimeout(r, 1500)); 
         }
         
       } catch (e) { 
@@ -66,7 +65,7 @@
       }
     }
 
-    const isSubmitted = document.querySelector('.state')?.innerText.includes('Correct') || document.querySelector('.state')?.innerText.includes('Incorrect');
+    const isSubmitted = document.querySelector('.state')?.innerText.includes('Correct') || document.querySelector('.state')?.innerText.includes('Incorrect') || document.querySelector('.state')?.innerText.includes('Đúng') || document.querySelector('.state')?.innerText.includes('Sai');
     
     if (!isSubmitted) {
       if (!allSuccess) {
