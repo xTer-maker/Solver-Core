@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Solver Core V3",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "Archive solver optimized for LMS DUT and Azota",
   "permissions": [
     "storage",
@@ -16,6 +16,8 @@
     "https://*.azota.vn/*",
     "https://lms.dut.udn.vn/*",
     "http://lms.dut.udn.vn/*",
+    "https://daotao.des.udn.vn/*",
+    "http://daotao.des.udn.vn/*",
     "https://api.openai.com/*",
     "https://api.anthropic.com/*",
     "https://generativelanguage.googleapis.com/*"
@@ -39,14 +41,24 @@
       "world": "ISOLATED"
     },
     {
-      "matches": ["https://lms.dut.udn.vn/*", "http://lms.dut.udn.vn/*"],
+      "matches": [
+        "https://lms.dut.udn.vn/*", 
+        "http://lms.dut.udn.vn/*",
+        "https://daotao.des.udn.vn/*",
+        "http://daotao.des.udn.vn/*"
+      ],
       "js": ["inject.js"],
       "run_at": "document_start",
       "all_frames": true,
       "world": "MAIN"
     },
     {
-      "matches": ["https://lms.dut.udn.vn/*", "http://lms.dut.udn.vn/*"],
+      "matches": [
+        "https://lms.dut.udn.vn/*", 
+        "http://lms.dut.udn.vn/*",
+        "https://daotao.des.udn.vn/*",
+        "http://daotao.des.udn.vn/*"
+      ],
       "js": ["stealth.js", "ai_bridge.js", "content_lms.js"],
       "run_at": "document_start",
       "all_frames": true,
