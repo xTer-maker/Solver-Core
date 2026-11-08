@@ -7,7 +7,9 @@ const BLOCK_PATTERNS = [
   '*://*/log*tab*',
   '*://*/track*visibility*',
   '*://lms.dut.udn.vn/mod/quiz/*monitor*',
-  '*://lms.dut.udn.vn/lib/ajax/*log*'
+  '*://lms.dut.udn.vn/lib/ajax/*log*',
+  '*://daotao.des.udn.vn/mod/quiz/*monitor*',
+  '*://daotao.des.udn.vn/lib/ajax/*log*'
 ];
 
 const rules = BLOCK_PATTERNS.map(function (p, i) {
