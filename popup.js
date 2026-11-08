@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', async function () {
   
   document.getElementById('provider').value = cfg.provider || 'gemini';
   document.getElementById('apiKey').value = cfg.apiKey || '';
-  document.getElementById('model').value = cfg.model || 'gemini-1.5-flash';
+  
+  // Cập nhật mặc định là Gemini 3.1 Flash Lite
+  document.getElementById('model').value = cfg.model || 'gemini-3.1-flash-lite';
   
   if (cfg.delays) {
     document.getElementById('answerDelay').value = cfg.delays.answer / 1000;
